@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODINGBASE | Suministros, Codificación y Equipos Industriales</title>
+<meta name="description" content="CODINGBASE provee suministros, equipos de codificación industrial (inkjet, láser, TTO) y servicio técnico para líneas de producción en Chile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">CODING<span>BASE</span></a>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#equipos">Equipos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto" class="nav-cta">Contactar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <canvas id="matrix"></canvas>
+  <div class="hero-content">
+    <p class="eyebrow">Suministros · Codificación · Equipos</p>
+    <h1>Cada producto que sale de tu línea, con el código correcto.</h1>
+    <p class="hero-sub">Proveemos consumibles, impresoras de codificación industrial (inkjet, láser, transferencia térmica) y el soporte técnico para que tu producción no se detenga.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="servicios">
+  <p class="section-eyebrow">/ 01 Servicios</p>
+  <h2>Todo lo que tu línea de producción necesita para codificar.</h2>
+  <div class="grid-3">
+    <article class="card">
+      <span class="card-index">01</span>
+      <h3>Suministros</h3>
+      <p>Tintas, solventes, cintas TTO y repuestos originales y compatibles, siempre disponibles para que tu equipo nunca se detenga.</p>
+    </article>
+    <article class="card">
+      <span class="card-index">02</span>
+      <h3>Codificación</h3>
+      <p>Impresoras inkjet de matriz continua, marcadores láser y transferencia térmica para lotes, fechas y trazabilidad.</p>
+    </article>
+    <article class="card">
+      <span class="card-index">03</span>
+      <h3>Equipos</h3>
+      <p>Etiquetadoras, escáneres de verificación e integración con tu línea existente, con instalación y capacitación incluida.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section-dark" id="equipos">
+  <p class="section-eyebrow">/ 02 Por qué CodingBase</p>
+  <h2>Soporte técnico real, no solo venta de insumos.</h2>
+  <div class="grid-4">
+    <div class="stat"><span class="stat-num">+10</span><span class="stat-label">años en la industria</span></div>
+    <div class="stat"><span class="stat-num">24h</span><span class="stat-label">respuesta técnica</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">trazabilidad de lote</span></div>
+    <div class="stat"><span class="stat-num">RM</span><span class="stat-label">cobertura Santiago y regiones</span></div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <p class="section-eyebrow">/ 03 Contacto</p>
+  <h2>Cuéntanos qué necesita tu línea de producción.</h2>
+  <div class="contact-grid">
+    <form class="contact-form" id="contact-form">
+      <label>Nombre<input type="text" name="nombre" required></label>
+      <label>Empresa<input type="text" name="empresa"></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Mensaje<textarea name="mensaje" rows="4" required></textarea></label>
+      <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+      <p class="form-note" id="form-note"></p>
+    </form>
+    <div class="contact-info">
+      <p><span>Dirección</span>Morandé 835, oficina 518</p>
+      <p><span>Teléfono</span><a href="tel:+56975164230">+56 9 7516 4230</a></p>
+      <p><span>Email</span><a href="mailto:ventas@codingbase.cl">ventas@codingbase.cl</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 CODINGBASE. Suministros, codificación y equipos industriales.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
