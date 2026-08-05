@@ -13,6 +13,7 @@
 }
 
 html{ scroll-behavior: smooth; }
+html, body{ max-width: 100%; overflow-x: hidden; }
 
 *{ box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -49,6 +50,18 @@ a{ color: inherit; text-decoration: none; }
   border: 1px solid var(--accent); color: var(--accent) !important;
   padding: 8px 16px; border-radius: 6px;
 }
+
+.hamburger{
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 34px; height: 34px; background: none; border: none; cursor: pointer; padding: 6px;
+}
+.hamburger span{
+  width: 100%; height: 2px; background: var(--text); display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.hamburger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity: 0; }
+.hamburger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
 /* Hero */
 .hero{ position: relative; padding: 120px 24px 100px; overflow: hidden; }
@@ -181,6 +194,20 @@ a{ color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 720px){
-  .nav-links{ gap: 16px; font-size: 13px; }
+  .hamburger{ display: flex; }
+  .nav-links{
+    position: fixed; top: 65px; left: 0; right: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    flex-direction: column; align-items: stretch; gap: 0;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .nav-links.open{ max-height: 320px; }
+  .nav-links a{
+    padding: 16px 24px; border-bottom: 1px solid var(--border); font-size: 15px;
+  }
+  .nav-cta{
+    margin: 14px 24px; text-align: center; border-radius: 6px;
+  }
   .contact-grid{ grid-template-columns: 1fr; }
 }

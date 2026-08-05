@@ -65,12 +65,31 @@
   draw();
 })();
 
+// --- Menú hamburguesa (mobile) ---
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+// Cierra el menú al elegir una opción
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
 // --- Carrusel infinito de clientes ---
 // Edita este array con los nombres reales de tus clientes.
 // Se duplica automáticamente para que el desplazamiento sea continuo (sin corte visible).
 const clientes = [
-  'Empresa MATI', 'Industrias CARO', 'Grupo DOMI', 'SHIFU Alimentos',
-  'GATITOS Épsilon', 'Zeta Envases', 'NEITH FOREVER', 'Theta Bebidas'
+  'MAESTRO SHIFU', 'Industrias SHIFU', 'Grupo DOMI', 'Delta Alimentos',
+  'Manufactura MATI', 'ANDY Envases', 'CAROLINA Logístic', 'Theta Bebidas'
 ];
 
 (function buildMarquee() {
