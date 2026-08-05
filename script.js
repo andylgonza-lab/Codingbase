@@ -51,9 +51,10 @@
       const size = 1.2 + closeness * 2.6;
       ctx.beginPath();
       ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+      // Cerca del cursor: celeste P-2995 C. Lejos: gris neutro sobre el grafito.
       ctx.fillStyle = closeness > 0.04
-        ? `rgba(226,166,59,${0.25 + closeness * 0.7})`
-        : 'rgba(139,146,160,0.18)';
+        ? `rgba(0,169,224,${0.25 + closeness * 0.7})`
+        : 'rgba(167,171,165,0.16)';
       ctx.fill();
     }
     requestAnimationFrame(draw);
@@ -63,6 +64,33 @@
   resize();
   draw();
 })();
+
+// --- Carrusel infinito de clientes ---
+// Edita este array con los nombres reales de tus clientes.
+// Se duplica automáticamente para que el desplazamiento sea continuo (sin corte visible).
+const clientes = [
+  'Empresa MATI', 'Industrias CARO', 'Grupo DOMI', 'SHIFU Alimentos',
+  'GATITOS Épsilon', 'Zeta Envases', 'NEITH FOREVER', 'Theta Bebidas'
+];
+
+(function buildMarquee() {
+  const track = document.getElementById('marquee-track');
+  const itemsHTML = clientes
+    .map(nombre => `<span class="marquee-item">${nombre}</span><span class="marquee-sep">◆</span>`)
+    .join('');
+  // Se inserta dos veces seguidas: la animación mueve el track exactamente 50%,
+  // dando la sensación de un loop infinito sin salto.
+  track.innerHTML = itemsHTML + itemsHTML;
+})();
+
+// --- Botón flotante "volver arriba" ---
+const topBtn = document.getElementById('top-btn');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('visible', window.scrollY > 400);
+});
+topBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // --- Formulario de contacto ---
 // Por ahora solo valida y muestra confirmación en pantalla.
