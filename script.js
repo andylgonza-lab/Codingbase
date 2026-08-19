@@ -51,10 +51,10 @@
       const size = 1.2 + closeness * 2.6;
       ctx.beginPath();
       ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-      // Cerca del cursor: celeste P-2995 C. Lejos: gris neutro sobre el grafito.
+      // Cerca del cursor: azul P-3005 C. Lejos: gris grafito muy suave sobre el blanco.
       ctx.fillStyle = closeness > 0.04
-        ? `rgba(0,169,224,${0.25 + closeness * 0.7})`
-        : 'rgba(167,171,165,0.16)';
+        ? `rgba(0,119,200,${0.3 + closeness * 0.6})`
+        : 'rgba(55,58,54,0.10)';
       ctx.fill();
     }
     requestAnimationFrame(draw);
@@ -63,6 +63,32 @@
   window.addEventListener('resize', resize);
   resize();
   draw();
+})();
+
+// --- Slideshow con puntos indicadores ("Por qué CodingBase") ---
+(function initSlideshow() {
+  const root = document.getElementById('slideshow');
+  if (!root) return;
+
+  const slides = Array.from(root.querySelectorAll('.slide'));
+  const segments = Array.from(root.querySelectorAll('.progress-seg'));
+  const DURATION = 7000; // ms por imagen, igual que la referencia
+  let current = 0;
+  let timer = null;
+
+  function goTo(index) {
+    clearTimeout(timer);
+    current = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
+    segments.forEach((seg, i) => seg.classList.toggle('is-active', i === current));
+    timer = setTimeout(() => goTo(current + 1), DURATION);
+  }
+
+  segments.forEach((seg) => {
+    seg.addEventListener('click', () => goTo(Number(seg.dataset.index)));
+  });
+
+  goTo(0);
 })();
 
 // --- Menú hamburguesa (mobile) ---
@@ -88,8 +114,8 @@ navLinks.querySelectorAll('a').forEach(link => {
 // Edita este array con los nombres reales de tus clientes.
 // Se duplica automáticamente para que el desplazamiento sea continuo (sin corte visible).
 const clientes = [
-  'MAESTRO SHIFU', 'Industrias SHIFU', 'Grupo DOMI', 'Delta Alimentos',
-  'Manufactura MATI', 'ANDY Envases', 'CAROLINA Logístic', 'Theta Bebidas'
+  'Empresa Alfa', 'Industrias Beta', 'Grupo Gamma', 'Delta Alimentos',
+  'Manufactura Épsilon', 'Zeta Envases', 'Eta Logística', 'Theta Bebidas'
 ];
 
 (function buildMarquee() {
